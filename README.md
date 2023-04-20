@@ -14,4 +14,13 @@ Windows Presentation Foundation
 	- Bikeshop 시작
 	- WPF 특징적인 개발
 	- 데이터바인딩
+
+## 3일차
+- WPF 기초
+	- 데이터바인딩 마무리
+	- 디자인(탬플릿, 스타일, 리소스, 리소스딕셔너리)
 	
+## 4일차
+- WPF 응용
+	- MahApps.Metro 디자인 적용
+	- MVVM 패턴
