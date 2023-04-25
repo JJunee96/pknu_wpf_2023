@@ -1,12 +1,13 @@
-# pknu_wpf_2023
-부경대 IoT 시스템개발자 WPF(데스크탑 앱 개발) 리포지토리
+# WPF_2023
+WPF(데스크탑 앱 개발) 리포지토리
+
 Windows Presentation Foundation
 
 ## 1일차
 - WPF 기초
-	- WPF 개요 및 WPF와 윈폼 차이점
-	- 기본 컨트롤
-	
+  - WPF 개요 및 윈폼과의 차이점
+  - 기본 컨트롤
+
 ## 2일차
 - WPF 기초
   - 기본 컨트롤
@@ -14,18 +15,26 @@ Windows Presentation Foundation
   - BikeShop 시작
   - WPF만의 개발방식
   - DB 핸들링
-
+  <img src="https://github.com/llsuzn/WPF_2023/blob/main/image/Day02_1.png?raw=true" width=400 />  
 
 ## 3일차
 - WPF 기초
-	- 데이터바인딩 마무리
-	- 디자인(탬플릿, 스타일, 리소스, 리소스딕셔너리)
-	
+   - 데이터 바이닝 마무리
+   - 디자인(템플릿, 스타일, 리소스, 리소스 딕셔너리)
+<img src="https://github.com/llsuzn/WPF_2023/blob/main/image/Day03_1.png?raw=true" width=400 />  
+<img src="https://github.com/llsuzn/WPF_2023/blob/main/image/Day03_2.png?raw=true" width=400 />  
+<img src="https://github.com/llsuzn/WPF_2023/blob/main/image/Day03_3.png?raw=true" width=400 />  
+<img src="https://github.com/llsuzn/WPF_2023/blob/main/image/Day03_4.png?raw=true" width=400 />  
+<img src="https://github.com/llsuzn/WPF_2023/blob/main/image/Day03_5.png?raw=true" width=400 />  
+<img src="https://github.com/llsuzn/WPF_2023/blob/main/image/Day03_6.png?raw=true" width=400 />  
+<img src="https://github.com/llsuzn/WPF_2023/blob/main/image/Day03_7.png?raw=true" width=400 />  
+
 ## 4일차
 - WPF 응용
-	- MahApps.Metro 디자인 적용
-	- MVVM 패턴
-	
+   - MahApps.Metro 디자인 적용
+   - MVVM 패턴
+<img src="https://github.com/llsuzn/WPF_2023/blob/main/image/Day04_1.png?raw=true" width=400 />     
+
 ## 5일차
 - WPF 응용
    - MVVM 패턴
@@ -34,13 +43,10 @@ Windows Presentation Foundation
 
 ## 6일차
 - WPF 응용
-	- 영화검색앱
-		- TMDB OpenAPI
-		- MahApps.Metro
-		- MahApps.Metro.IconPacks
-		- Newtonsoft.Json
-	
-6일차 영화검색앱 중간
-
-<img
-src="" width="700" />
+   - 영화 검색앱
+      - TMDB OpenAPI
+      - MahApps.Metro
+      -MahApps.Metro.IconPacks
+      - Newtonsoft.Json
+<img src="https://github.com/llsuzn/WPF_2023/blob/main/image/Day06_1.png?raw=true" width=400 /> 
+      
