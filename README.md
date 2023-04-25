@@ -9,11 +9,12 @@ Windows Presentation Foundation
 	
 ## 2일차
 - WPF 기초
-	- 기본컨트롤
-	- 레이아웃 Grid...
-	- Bikeshop 시작
-	- WPF 특징적인 개발
-	- 데이터바인딩
+  - 기본 컨트롤
+  - 레이아웃 Grid 사용방법
+  - BikeShop 시작
+  - WPF만의 개발방식
+  - DB 핸들링
+
 
 ## 3일차
 - WPF 기초
@@ -24,3 +25,22 @@ Windows Presentation Foundation
 - WPF 응용
 	- MahApps.Metro 디자인 적용
 	- MVVM 패턴
+	
+## 5일차
+- WPF 응용
+   - MVVM 패턴
+   - MVVM framework / Caliburn
+   - 데이터바인딩 DB연동
+
+## 6일차
+- WPF 응용
+	- 영화검색앱
+		- TMDB OpenAPI
+		- MahApps.Metro
+		- MahApps.Metro.IconPacks
+		- Newtonsoft.Json
+	
+6일차 영화검색앱 중간
+
+<img
+src="" width="700" />
