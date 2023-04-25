@@ -15,7 +15,7 @@ Windows Presentation Foundation
   - BikeShop 시작
   - WPF만의 개발방식
   - DB 핸들링
-  <img src="https://github.com/llsuzn/WPF_2023/blob/main/image/Day02_1.png?raw=true" width=400 />  
+  <img src="https://raw.githubusercontent.com/JJunee96/pknu_wpf_2023/main/image/Day02_1.png" width=400 />  
 
 ## 3일차
 - WPF 기초
