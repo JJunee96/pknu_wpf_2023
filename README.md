@@ -50,3 +50,14 @@ Windows Presentation Foundation
       - Newtonsoft.Json
 <img src="https://github.com/llsuzn/WPF_2023/blob/main/image/Day06_1.png?raw=true" width=400 /> 
       
+## 7일차
+- WPF 응용
+	- 영화검색앱
+		- 화면정리
+		- CefSharp
+		- youtube OpenAPI
+		- DB 데이터바인딩
+		
+7일차 영화검색앱 중간		
+
+<img src="https://github.com/llsuzn/WPF_2023/blob/main/image/Day07_01.png?raw=true" width=400 /> 
