@@ -60,5 +60,6 @@ Windows Presentation Foundation
 		- DB 데이터바인딩
 		
 7일차 영화검색앱 중간		
+
 <img src="https://raw.githubusercontent.com/JJunee96/pknu_wpf_2023/main/image/Day06_1.png" width=400 /> 
       
