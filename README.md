@@ -69,3 +69,18 @@ Windows Presentation Foundation
 영화검색앱  
 
 <img src="https://raw.githubusercontent.com/JJunee96/pknu_wpf_2023/main/image/Day08_01.gif" width=600 /> 
+
+미세먼지확인 앱 중간
+
+<img src="https://raw.githubusercontent.com/JJunee96/pknu_wpf_2023/main/image/Day08_01.png" width=600 />
+
+## 9일차
+- WPF 응용
+	- 미세먼지확인 앱 완료
+		- MahApps.Metro
+		- 데이터포털 OpenAPI
+		- DB 데이터바인딩 (MySQL)
+	- 개인 포트폴리오 개발방식
+		- 데이터포털 OpenAPI
+		- 네이버, 카카오 OpenAPI
+		- 기타 OpenAPI
