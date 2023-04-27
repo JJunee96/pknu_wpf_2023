@@ -21,13 +21,7 @@ Windows Presentation Foundation
 - WPF 기초
    - 데이터 바이닝 마무리
    - 디자인(템플릿, 스타일, 리소스, 리소스 딕셔너리)
-<img src="https://raw.githubusercontent.com/JJunee96/pknu_wpf_2023/main/image/Day03_1.png" width=400 />  
-<img src="https://raw.githubusercontent.com/JJunee96/pknu_wpf_2023/main/image/Day03_2.png" width=400 />  
-<img src="https://raw.githubusercontent.com/JJunee96/pknu_wpf_2023/main/image/Day03_3.png" width=400 />  
-<img src="https://raw.githubusercontent.com/JJunee96/pknu_wpf_2023/main/image/Day03_4.png" width=400 />  
-<img src="https://raw.githubusercontent.com/JJunee96/pknu_wpf_2023/main/image/Day03_5.png" width=400 />  
-<img src="https://raw.githubusercontent.com/JJunee96/pknu_wpf_2023/main/image/Day03_6.png" width=400 />  
-<img src="https://raw.githubusercontent.com/JJunee96/pknu_wpf_2023/main/image/Day03_7.png" width=400 />  
+<img src="https://raw.githubusercontent.com/JJunee96/pknu_wpf_2023/main/image/Day03_01.gif" width=600 />
 
 ## 4일차
 - WPF 응용
@@ -74,4 +68,4 @@ Windows Presentation Foundation
 
 영화검색앱  
 
-<img src="https://raw.githubusercontent.com/JJunee96/pknu_wpf_2023/main/image/Day08_01.gif" width=400 /> 
+<img src="https://raw.githubusercontent.com/JJunee96/pknu_wpf_2023/main/image/Day08_01.gif" width=600 /> 
