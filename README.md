@@ -48,7 +48,7 @@ Windows Presentation Foundation
       - MahApps.Metro
       -MahApps.Metro.IconPacks
       - Newtonsoft.Json
-<<<<<<< HEAD
+
 <img src="https://github.com/llsuzn/WPF_2023/blob/main/image/Day06_1.png?raw=true" width=400 /> 
       
 ## 7일차
@@ -63,3 +63,15 @@ Windows Presentation Foundation
 
 <img src="https://raw.githubusercontent.com/JJunee96/pknu_wpf_2023/main/image/Day06_1.png" width=400 /> 
       
+## 8일차
+- WPF 응용
+	- 영화검색앱 완료
+		- DB 데이터바인딩(MySQL)
+	- 미세먼지확인 앱 개발
+		- MahApps.Metro
+		- 데이터포털 OpenAPI
+		- DB 데이터바인딩(MySQL)
+
+영화검색앱  
+
+<img src="https://raw.githubusercontent.com/JJunee96/pknu_wpf_2023/main/image/Day08_01.gif" width=400 /> 
