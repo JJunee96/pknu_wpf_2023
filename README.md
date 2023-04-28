@@ -82,5 +82,9 @@ Windows Presentation Foundation
 		- DB 데이터바인딩 (MySQL)
 	- 개인 포트폴리오 개발방식
 		- 데이터포털 OpenAPI
-		- 네이버, 카카오 OpenAPI
+		- 네이버, 구글, 카카오 OpenAPI
 		- 기타 OpenAPI
+		
+9일차 미세먼지확인 앱
+
+<img src="https://raw.githubusercontent.com/JJunee96/pknu_wpf_2023/main/image/Day09_01.gif" width=700 />
