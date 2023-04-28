@@ -73,7 +73,7 @@ namespace wp12_finedustCheck
                     {
                         dustSensors.Add(new DustSensor
                         {
-                            Id = 0,
+                            Id = Convert.ToInt32(sensor["id"]),
                             Dev_id = Convert.ToString(sensor["dev_id"]),
                             Name = Convert.ToString(sensor["name"]),
                             Loc = Convert.ToString(sensor["loc"]),
