@@ -33,7 +33,7 @@
                 <Grid Grid.Row="1" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="3*"/>
-                        <ColumnDefinition Width="1*"/>
+                        <!--<ColumnDefinition Width="1*"/>-->
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
                     <TextBox Grid.Column="0" x:Name="TxtHptName" FontSize="14" Margin="5,10"
@@ -44,11 +44,11 @@
                          InputMethod.PreferredImeConversionMode="Native"
                          KeyDown="TxtHptName_KeyDown"/>
                     
-                    <ComboBox Grid.Column="1" x:Name="CboSelectArea" Width="150" Margin="5, 10" Style="{StaticResource MahApps.Styles.ComboBox}"
+                    <!--<ComboBox Grid.Column="1" x:Name="CboSelectArea" Width="150" Margin="5, 10" Style="{StaticResource MahApps.Styles.ComboBox}"
                           mah:TextBoxHelper.Watermark="지역 선택"
                           mah:TextBoxHelper.UseFloatingWatermark="True"
                           mah:TextBoxHelper.ClearTextButton="True"
-                          SelectionChanged="CboSelectArea_SelectionChanged"/>
+                          SelectionChanged="CboSelectArea_SelectionChanged"/>-->
 
                     <Button Grid.Column="2" x:Name="BtnSearchHpt" FontSize="14" Margin="5, 10"
                             Content="검색" Style="{StaticResource MahApps.Styles.Button.Square.Accent}" Click="BtnSearchHpt_Click">
@@ -73,7 +73,7 @@
         <!--#endregion-->
         <!--#region 그리드 메인 부분 -->
         <DataGrid Grid.Row="1" x:Name="GrdResult" Style="{StaticResource MahApps.Styles.DataGrid.Azure}" Margin="10"
-                  IsReadOnly="True" ItemsSource="{Binding}" MouseDoubleClick="GrdResult_MouseDoubleClick"></DataGrid>
+                  IsReadOnly="True" ItemsSource="{Binding}"/>
         <!--#endregion-->
         <!--#region 그리드 상태 부분 -->
         <StatusBar Grid.Row="3">

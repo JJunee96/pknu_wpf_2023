@@ -88,3 +88,9 @@ Windows Presentation Foundation
 9일차 미세먼지확인 앱
 
 <img src="https://raw.githubusercontent.com/JJunee96/pknu_wpf_2023/main/image/Day09_01.gif" width=700 />
+
+## 10일차
+- WPF 응용
+	- 개인 포트폴리오 완료
+	
+<img src="https://raw.githubusercontent.com/JJunee96/pknu_wpf_2023/main/image/AnimalHosp.gif" width=700 />
