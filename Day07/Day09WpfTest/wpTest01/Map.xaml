@@ -1,0 +1,21 @@
+﻿<mah:MetroWindow 
+        x:Class="wpTest01.Map"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:cefSharp="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
+        xmlns:local="clr-namespace:wpTest01"
+        mc:Ignorable="d"
+        Title="Map" Height="450" Width="800">
+    <mah:MetroWindow.IconTemplate>
+        <DataTemplate>
+            <iconPacks:PackIconFontAwesome Kind="DogSolid" Margin="5, 7, 0, 0" Foreground="SandyBrown" />
+        </DataTemplate>
+    </mah:MetroWindow.IconTemplate>
+    <Grid>
+        <cefSharp:ChromiumWebBrowser x:Name="BrslocHosp" Address="https://map.google.com"/>
+    </Grid>
+</mah:MetroWindow>

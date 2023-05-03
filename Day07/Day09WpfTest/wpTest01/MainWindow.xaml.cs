@@ -5,22 +5,11 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.Diagnostics.Eventing.Reader;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Runtime.Remoting.Metadata.W3cXsd2001;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using wpTest01.AnimalHpt;
 using wpTest01.Logics;
 
@@ -31,7 +20,6 @@ namespace wpTest01
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-        bool isFavorite = false;
         public MainWindow()
         {
             InitializeComponent();
@@ -103,7 +91,6 @@ namespace wpTest01
                     }
                 }
                 this.DataContext = hosplist;
-                isFavorite = false;
                 StsResult.Content = $"동물병원 검색결과 {hosplist.Count}건 조회완료";
             }
         }
@@ -153,6 +140,7 @@ namespace wpTest01
                     var json_array = data as JArray;
 
                     var hosplist = new HashSet<string>();
+                    // hosplist.Add("전체"); 콤보박스 0번 인덱스에 '전체' 추가
                     foreach (var list in json_array)
                     {
                         if (Convert.ToString(list["gugun"]) != string.Empty) // == string.Empty
@@ -160,32 +148,27 @@ namespace wpTest01
                             hosplist.Add(Convert.ToString(list["gugun"]));
                         }
                     }
-                    hosplist.Add("");
+                    
                     Debug.WriteLine(hosplist);
                     CboSelectArea.ItemsSource = hosplist;
+                    // CboSelectArea.SelectedIndex = 0; 콤보박스 디폴트값 0번째 인덱스
+
                 }
             }
             catch (Exception ex)
             {
                 await Commons.ShowMessageAsync("오류", $"JSON 처리오류 {ex.Message}");
             }
-
             #endregion
             #region < 실행시 데이터 삭제, 등록 >
             using (SqlConnection conn = new SqlConnection(Commons.connString))
             {
                 if (conn.State == ConnectionState.Closed) conn.Open();
 
-                var query = "DELETE FROM AnimalHosp WHERE animal_hospital = @animal_hospital";
+                var query = "DELETE FROM AnimalHosp";
                 var delRes = 0;
-
-                foreach (Hosp item in GrdResult.Items)
-                {
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@animal_hospital", item.animal_hospital);
-
-                    delRes += cmd.ExecuteNonQuery();
-                }
+                SqlCommand cmd = new SqlCommand(query, conn);
+                delRes += cmd.ExecuteNonQuery(); // 전체 다 삭제.
             }
 
             using (SqlConnection conn = new SqlConnection(Commons.connString))
@@ -242,11 +225,11 @@ namespace wpTest01
 
         private async void BtnSearchHpt_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(TxtHptName.Text))
-            {
-                await Commons.ShowMessageAsync("검색", "검색할 동물병원 이름을 입력하세요.");
-                return; 
-            }
+            //if (string.IsNullOrEmpty(TxtHptName.Text))
+            //{
+            //    await Commons.ShowMessageAsync("검색", "검색할 동물병원 이름을 입력하세요.");
+            //    return; 
+            //}
             try
             {
                 SearchHosp(TxtHptName.Text, CboSelectArea.SelectedValue);
@@ -257,7 +240,6 @@ namespace wpTest01
             }
         }
         #endregion
-
         #region < 실제 검색 하는 부분 >
         private void SearchHosp(string hospName, object gugunName)
         {
@@ -279,7 +261,8 @@ namespace wpTest01
                                      basic_date
                                 FROM AnimalHosp
                                WHERE gugun LIKE '%' + @gugun +'%'
-                                 AND animal_hospital LIKE @animal_hospital +'%'";
+                                 AND animal_hospital LIKE @animal_hospital +'%'
+                               ORDER BY animal_hospital";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@gugun", gugunName);
                 cmd.Parameters.AddWithValue("@animal_hospital", hospName);
@@ -305,81 +288,8 @@ namespace wpTest01
                 this.DataContext = hospList;
                 StsResult.Content = $"DB {hospList.Count}건 조회완료";
             }
-            
-            
-            //string data_apiKey = "YYHJjeiagyFeSD69gRR9ykzP7KS0HqJOPMzv0HmJ8ETzz2witGrEIA63UsK40QjbpFfTSI2lRJ23P3%2FsHnjoRw%3D%3D";
-            //// string encoding_hospName = HttpUtility.UrlEncode(hospName, Encoding.UTF8);
-            //string openApiUrl = $"https://apis.data.go.kr/6260000/BusanAnimalHospService/getTblAnimalHospital?serviceKey={data_apiKey}&pageNo=1&numOfRows=1000&resultType=json";
-            //string result = string.Empty;
-
-            //WebRequest req = null;
-            //WebResponse res = null;
-            //StreamReader reader = null;
-
-            //try
-            //{
-            //    req = WebRequest.Create(openApiUrl);
-            //    res = await req.GetResponseAsync();
-            //    reader = new StreamReader(res.GetResponseStream());
-            //    result = reader.ReadToEnd();
-
-            //    //Debug.WriteLine(result);
-            //}
-            //catch (Exception ex)
-            //{
-
-            //    throw ex;
-            //}
-            //finally
-            //{
-            //    reader.Close();
-            //    res.Close();
-            //}
-
-            //var jsonResult = JObject.Parse(result); // string => json
-            //var resultCode = Convert.ToString(jsonResult["getTblAnimalHospital"]["header"]["resultCode"]);
-
-            //try
-            //{
-            //    if (resultCode == "00") // 코드 00 : 정상
-            //    {
-            //        var data = jsonResult["getTblAnimalHospital"]["body"]["items"]["item"];
-            //        var json_array = data as JArray;
-
-            //        var hosplist = new List<Hosp>();
-            //        foreach (var list in json_array)
-            //        {
-            //            if (Convert.ToString(list["animal_hospital"]) != string.Empty)
-            //            {
-
-            //                if (Convert.ToString(list["animal_hospital"]).Contains(hospName))
-            //                {
-            //                    hosplist.Add(new Hosp
-            //                    {
-            //                        gugun = Convert.ToString(list["gugun"]),
-            //                        animal_hospital = Convert.ToString(list["animal_hospital"]),
-            //                        approval = Convert.ToDateTime(list["approval"]),
-            //                        road_address = Convert.ToString(list["road_address"]),
-            //                        tel = Convert.ToString(list["tel"]),
-            //                        lat = Convert.ToString(list["lat"]) == string.Empty ? 0.0 :Convert.ToDouble(list["lat"]),
-            //                        lon = Convert.ToString(list["lon"]) == string.Empty ? 0.0 : Convert.ToDouble(list["lon"]),
-            //                        basic_date = Convert.ToDateTime(list["basic_date"])
-            //                    });
-            //                }
-            //            }
-            //        }
-            //        this.DataContext = hosplist;
-            //        isFavorite = false;
-            //        StsResult.Content = $"동물병원 검색결과 {hosplist.Count}건 조회완료";
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    await Commons.ShowMessageAsync("오류", $"JSON 처리오류 {ex.Message}");
-            //}
         }
         #endregion
-
         #region < 버튼 함수 부분 >
         private async void BtnAddFavorite_Click(object sender, RoutedEventArgs e)
         {
@@ -389,19 +299,29 @@ namespace wpTest01
                 return;
             }
 
-            if (isFavorite)
-            {
-                await Commons.ShowMessageAsync("오류", "이미 즐겨찾기한 병원입니다");
-                return;
-            }
             try
             {
                 // DB 연결확인
                 using (SqlConnection conn = new SqlConnection(Commons.connString))
                 {
                     if (conn.State == ConnectionState.Closed) conn.Open();
-                    var query = @"INSERT INTO FavoriteHosp
-                                             (
+                    
+                    var insRes = 0;
+                    foreach (Hosp item in GrdResult.SelectedItems)
+                    {
+                        var chkQuery = @"SELECT COUNT(*) FROM FavoriteHosp
+                                          WHERE gugun = @gugun 
+                                            AND animal_hospital = @animal_hospital";
+
+                        SqlCommand chkCmd = new SqlCommand(chkQuery, conn);
+                        chkCmd.Parameters.AddWithValue("@gugun", item.gugun);
+                        chkCmd.Parameters.AddWithValue("@animal_hospital", item.animal_hospital);
+                        var result = Convert.ToInt32(chkCmd.ExecuteScalar());
+
+                        if (result == 0)
+                        {
+                            var insQuery = @"INSERT INTO FavoriteHosp
+                                            (
                                               gugun
                                              ,animal_hospital
                                              ,approval
@@ -421,25 +341,33 @@ namespace wpTest01
                                              ,@lon
                                              ,@basic_date)";
 
-                    var insRes = 0;
-                    foreach (FavoriteHosp item in GrdResult.SelectedItems)
-                    {
-                        SqlCommand cmd = new SqlCommand(query, conn);
-                        cmd.Parameters.AddWithValue("@gugun", item.gugun);
-                        cmd.Parameters.AddWithValue("@animal_hospital", item.animal_hospital);
-                        cmd.Parameters.AddWithValue("@approval", item.approval);
-                        cmd.Parameters.AddWithValue("@road_address", item.road_address);
-                        cmd.Parameters.AddWithValue("@tel", item.tel);
-                        cmd.Parameters.AddWithValue("@lat", item.lat);
-                        cmd.Parameters.AddWithValue("@lon", item.lon);
-                        cmd.Parameters.AddWithValue("@basic_date", item.basic_date);
+                            SqlCommand cmd = new SqlCommand(insQuery, conn);
+                            cmd.Parameters.AddWithValue("@gugun", item.gugun);
+                            cmd.Parameters.AddWithValue("@animal_hospital", item.animal_hospital);
+                            cmd.Parameters.AddWithValue("@approval", item.approval);
+                            cmd.Parameters.AddWithValue("@road_address", item.road_address);
+                            cmd.Parameters.AddWithValue("@tel", item.tel);
+                            cmd.Parameters.AddWithValue("@lat", item.lat);
+                            cmd.Parameters.AddWithValue("@lon", item.lon);
+                            cmd.Parameters.AddWithValue("@basic_date", item.basic_date);
 
-                        insRes += cmd.ExecuteNonQuery();
+                            insRes += cmd.ExecuteNonQuery();
+                        }                        
                     }
 
-                    if (GrdResult.SelectedItems.Count == insRes)
+                    if (0 == insRes)
                     {
-                        await Commons.ShowMessageAsync("저장", "DB저장성공");
+                        await Commons.ShowMessageAsync("저장", "즐겨찾기에 데이터가 존재합니다.");
+                        StsResult.Content = $"즐겨찾기 {insRes} 건 저장완료";
+                    }
+                    else if (GrdResult.SelectedItems.Count == insRes)
+                    {
+                        await Commons.ShowMessageAsync("저장", "저장 성공");
+                        StsResult.Content = $"즐겨찾기 {insRes} 건 저장완료";
+                    }
+                    else if (GrdResult.SelectedItems.Count != insRes)
+                    {
+                        await Commons.ShowMessageAsync("저장", "일부 데이터 저장 성공");
                         StsResult.Content = $"즐겨찾기 {insRes} 건 저장완료";
                     }
                     else
@@ -498,7 +426,6 @@ namespace wpTest01
                     }
 
                     this.DataContext = list;
-                    isFavorite = true;
                     StsResult.Content = $"즐겨찾기 {list.Count} 건 조회완료";
                 }
             }
@@ -510,12 +437,6 @@ namespace wpTest01
 
         private async void BtnDelFavorite_Click(object sender, RoutedEventArgs e)
         {
-            if (isFavorite == false)
-            {
-                await Commons.ShowMessageAsync("오류", "즐겨찾기만 삭제할 수 있습니다.");
-                return;
-            }
-
             if (GrdResult.SelectedItems.Count == 0)
             {
                 await Commons.ShowMessageAsync("오류", "삭제할 병원을 선택하세요.");
@@ -557,5 +478,15 @@ namespace wpTest01
             }
         }
         #endregion
+
+        private void GrdResult_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var selItem = GrdResult.SelectedItem as Hosp;
+
+            var map = new Map(selItem.lat, selItem.lon);
+            map.Owner = this;
+            map.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            map.ShowDialog(); 
+        }
     }
 }

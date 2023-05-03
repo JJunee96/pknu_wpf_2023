@@ -73,7 +73,7 @@
         <!--#endregion-->
         <!--#region 그리드 메인 부분 -->
         <DataGrid Grid.Row="1" x:Name="GrdResult" Style="{StaticResource MahApps.Styles.DataGrid.Azure}" Margin="10"
-                  IsReadOnly="True" ItemsSource="{Binding}"/>
+                  IsReadOnly="True" ItemsSource="{Binding}" MouseDoubleClick="GrdResult_MouseDoubleClick"/>
         <!--#endregion-->
         <!--#region 그리드 상태 부분 -->
         <StatusBar Grid.Row="3">

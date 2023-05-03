@@ -180,7 +180,7 @@ namespace wp11_movieFinder
             }
         }
 
-        // 영화 예고펹 유튜브 보기
+        // 영화 예고편 유튜브 보기
         private async void BtnWatchTrailer_Click(object sender, RoutedEventArgs e)
         {
             if (GrdResult.SelectedItems.Count == 0)

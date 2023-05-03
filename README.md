@@ -93,4 +93,4 @@ Windows Presentation Foundation
 - WPF 응용
 	- 개인 포트폴리오 완료
 	
-<img src="https://raw.githubusercontent.com/JJunee96/pknu_wpf_2023/main/image/AnimalHosp.gif" width=700 />
+<img src="https://raw.githubusercontent.com/JJunee96/pknu_wpf_2023/main/image/Day10_01.gif" width=700 />
